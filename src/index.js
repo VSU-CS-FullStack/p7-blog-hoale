@@ -1,12 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App'
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css'; // import Bootstrap CSS library
+import './index.css'
+import {createStore, applyMiddleware, compose} from 'redux'
+import {Provider} from 'react-redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import ReduxPromise from 'redux-promise'
+
+import rootReducer from './reducers'
+//might be {}
+const store = createStore(rootReducer,{},
+  composeWithDevTools(
+    applyMiddleware(
+      ReduxPromise
+      )
+      ))
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
