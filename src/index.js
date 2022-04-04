@@ -1,29 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App'
+// With React Router, we no long need a centralized App component anymore
+// import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'; // import Bootstrap CSS library
 import './index.css'
 import {createStore, applyMiddleware, compose} from 'redux'
 import {Provider} from 'react-redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import ReduxPromise from 'redux-promise'
-
+import { BrowserRouter, Route } from 'react-router-dom';
+import PostsIndex from './containers/posts_index';
 import rootReducer from './reducers'
 //might be {}
 const store = createStore(rootReducer,{},
   composeWithDevTools(
     applyMiddleware(
-      ReduxPromise
       )
       ))
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
-    </Provider>
+        <BrowserRouter>
+            <div>
+                <Route path="/api/posts" component={PostsIndex} />
+                <Route exact path='/' component={PostsIndex}/>
+            </div>
+        </BrowserRouter>
+   </Provider>,
   </React.StrictMode>,
   document.getElementById('root')
 );
