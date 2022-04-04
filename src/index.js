@@ -12,12 +12,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import { BrowserRouter, Route } from 'react-router-dom';
 import PostsIndex from './containers/posts_index';
 import rootReducer from './reducers'
+import ReduxPromise from 'redux-promise';
 //might be {}
-const store = createStore(rootReducer,{},
-  composeWithDevTools(
-    applyMiddleware(
-      )
-      ))
+const store = createStore(rootReducer, {}, composeWithDevTools(applyMiddleware(ReduxPromise)));
 
 ReactDOM.render(
   <React.StrictMode>

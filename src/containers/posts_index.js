@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-
+import { connect } from "react-redux";
+import { fetchPosts } from "../actions/index";
 class PostsIndex extends Component {
+    componentDidMount(){
+        this.props.fetchPosts();
+    }
     render() {
         return (
             <div>
@@ -10,4 +14,5 @@ class PostsIndex extends Component {
     }
 }
 
-export default PostsIndex;
+// Nice ES6 shortcut that omits mapDispatchToProps and bindActionCreators explicitly
+export default connect(null, {fetchPosts})(PostsIndex);
