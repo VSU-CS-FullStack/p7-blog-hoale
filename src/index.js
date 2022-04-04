@@ -9,11 +9,13 @@ import './index.css'
 import {createStore, applyMiddleware, compose} from 'redux'
 import {Provider} from 'react-redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import PostsNew from "./containers/posts_new";
 import PostsIndex from './containers/posts_index';
 import rootReducer from './reducers'
 import ReduxPromise from 'redux-promise';
 //might be {}
+
 const store = createStore(rootReducer, {}, composeWithDevTools(applyMiddleware(ReduxPromise)));
 
 ReactDOM.render(
@@ -21,11 +23,14 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <div>
-                <Route path="/api/posts" component={PostsIndex} />
-                <Route exact path='/' component={PostsIndex}/>
+                <Switch>
+                    <Route path="/api/posts/new" component={PostsNew} />
+                    <Route exact path='/' component={PostsIndex}/>
+                    <Route path="/api/posts" component={PostsIndex} />
+                </Switch>
             </div>
         </BrowserRouter>
-   </Provider>,
+    </Provider>,
   </React.StrictMode>,
   document.getElementById('root')
 );
