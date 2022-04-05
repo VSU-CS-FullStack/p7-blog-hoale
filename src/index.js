@@ -14,6 +14,7 @@ import PostsNew from "./containers/posts_new";
 import PostsIndex from './containers/posts_index';
 import rootReducer from './reducers'
 import ReduxPromise from 'redux-promise';
+import PostsShow from "./containers/posts_show";
 //might be {}
 
 const store = createStore(rootReducer, {}, composeWithDevTools(applyMiddleware(ReduxPromise)));
@@ -24,7 +25,9 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <Switch>
-                    <Route path="/api/posts/new" component={PostsNew} />
+                     <Route path="/api/posts/new" component={PostsNew} />
+                    <Route path="/api/posts/:id" component={PostsShow} />
+                    
                     <Route exact path='/' component={PostsIndex}/>
                     <Route path="/api/posts" component={PostsIndex} />
                 </Switch>

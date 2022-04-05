@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector } from "redux-form";  
 import { Link } from "react-router-dom";
-
+import { createPost } from "../actions";
 class PostsNew extends Component {
     renderTitleField(field){
         const className = `form-control ${field.meta.touched && field.meta.error ? 'is-invalid' : ''}`
@@ -75,8 +75,13 @@ class PostsNew extends Component {
     }
     
     onSubmit(values) {
-        console.log(values);
+        this.props.createPost(values, () => {
+            // user is redirected to the '/' route
+            this.props.history.push('/');
+        });
     }
+
+
 
         
     render() {
@@ -158,6 +163,7 @@ PostsNew = connect(state => {
     hasRefsValue,
     refsValue
   }
-})(PostsNew);
+}, {createPost} )(PostsNew);
+//})(PostsNew);
 
 export default PostsNew;
