@@ -1,0 +1,83 @@
+commit e1403de5c40c02d2658e91168df6ddebf8532816
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Tue Apr 5 14:28:17 2022 -0400
+
+    Get ready for Heroku
+
+commit ccd7e204236dad6a884c60c6b5a754559ea9495a
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Tue Apr 5 14:24:29 2022 -0400
+
+    Unable to fully get edit button to work
+
+commit fd0977c243456815c4cebd923e9029f4563cf3df
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 23:26:54 2022 -0400
+
+    Able to delete a post
+
+commit 471d6a8b8f4da5b2d0ce5fcd17248242dc576b87
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 23:23:54 2022 -0400
+
+    Able to show a post
+
+commit b93937d8a5239ef548e1e0ff4ffa9d42b8786f86
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 12:13:45 2022 -0400
+
+    Added form to postnew
+
+commit 569429bb6b9b63143bb594e1e1fefb88128ffe23
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 11:54:45 2022 -0400
+
+    add navigation between post index and new
+
+commit eec80bfc9e4859dfc1a391bca866109f725c95c1
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 00:55:01 2022 -0400
+
+    map state to props in the container
+
+commit 0993424a0037a8099f202db242516a23da19c658
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 00:52:53 2022 -0400
+
+    created posts in the redux store
+
+commit 730b12565edaef28d4ce55a998cd3d6dededf72a
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 00:50:26 2022 -0400
+
+    Action creator and bind it to the container
+
+commit 7ba618977bfba3c60cd6b81ef30a0e52d8e94c33
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 00:44:35 2022 -0400
+
+    installed lodash
+
+commit e11ea7ef159559070f904c82246e57cdb24d5a4a
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Mon Apr 4 00:43:26 2022 -0400
+
+    created post index container file
+
+commit 6d1d370379ef105797dea9ce730880ef0f446379
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Sun Apr 3 23:05:29 2022 -0400
+
+    Created reducers and components folders and made necessary adjustments
+
+commit fa28c44ee54f8757bd39db35ea5fe337b01a7360
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Tue Mar 29 16:39:10 2022 -0400
+
+    created a new react app- frontend of the Blog app
+
+commit 919b24e6eadda59b4c15c7696f28c479154af6eb
+Author: hnqle3 <hoa.nq.le3@gmail.com>
+Date:   Tue Mar 29 16:37:58 2022 -0400
+
+    Initialize project using Create React App

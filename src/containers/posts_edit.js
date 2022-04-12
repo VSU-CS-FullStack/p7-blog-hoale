@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector } from "redux-form";  
 import { Link } from "react-router-dom";
-import { updatePost } from "../actions";
+import { createPost } from "../actions";
+import { fetchPost, updatePost } from "../actions";
 class PostsEdit extends Component {
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        this.props.fetchPost(id);
+    }  
     renderTitleField(field){
         const className = `form-control ${field.meta.touched && field.meta.error ? 'is-invalid' : ''}`
 
@@ -73,12 +78,16 @@ class PostsEdit extends Component {
             </div>
         );
     }
-    // onSubmit(values) {
-    //     this.props.createPost(values, () => {
-    //         // user is redirected to the '/' route
-    //         this.props.history.push('/');
-    //     });
-    // }
+    
+    onSubmit(values) {
+        this.props.updatePost(values, () => {
+            // user is redirected to the '/' route
+            this.props.history.push('/');
+        });
+    }
+
+
+        
     render() {
         const { handleSubmit } = this.props;
         return (
@@ -111,14 +120,14 @@ class PostsEdit extends Component {
                             component={this.renderReferencesField}
                         />
                     )}
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Update</button>
                     <Link to="/" className="btn btn-primary">Cancel</Link>
                 </form>
             </div>
         );
     }
 }
-
+    
 function validate(values){
     const errors = {};
 
@@ -138,31 +147,31 @@ function validate(values){
 
 PostsEdit = reduxForm({
     validate,
-    form: "PostsUpdateForm"
+    form: "PostsEditForm"
 })(PostsEdit);
 
-const selector = formValueSelector('PostsUpdateForm');
+const selector = formValueSelector('PostsNewForm');
 PostsEdit = connect((state, ownProps) => {
+    // can select values individually
     const title = selector(state, 'title')
     const category = selector(state, 'category')
     const content = selector(state, 'content')
     const hasRefsValue = selector(state, 'hasReferences')
     const refsValue = selector(state, 'references')
   
-  // pull initial values from state "posts"
-  const initialValues = state.posts[ownProps.match.params.id] 
-
+    // initialValues is the property that Redux Form uses to pre-load form with initial data
+    const initialValues = state.posts[ownProps.match.params.id] // pull initial values from state "posts"
   
-  // props
-  return {
-    title,
-    category,
-    content,
-    hasRefsValue,
-    refsValue,
-    initialValues
-  }
-}, 
-{updatePost})(PostsEdit);
-
-export default PostsEdit;
+    // props
+    return {
+      title,
+      category,
+      content,
+      hasRefsValue,
+      refsValue,
+  
+      initialValues
+    }
+  }, {fetchPost, updatePost})(PostsEdit);
+  
+  export default PostsEdit;

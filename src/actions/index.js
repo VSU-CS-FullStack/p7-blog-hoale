@@ -52,12 +52,13 @@ export function deletePost(id, callback) {
 }
 
 
-export function updatePost(values,id,callback) {
-    if (!values.hasReferences || values.hasReferences===false)
-        values =  _.omit(values, "references" );
+export function updatePost(values, callback) {
+    if (!values.hasReferences || values.hasReferences === false)
+        values = _.omit(values, "references");
 
+    // (!values.hasReferences || values.hasReferences===false) ? _.omit(values, { "references"}) : values
     const request = axios
-        .put(`${ROOT_URL}/posts/${id}`, values)
+        .put(`${ROOT_URL}/posts/${values._id}`, values)
         .then(() => callback());
 
     return {

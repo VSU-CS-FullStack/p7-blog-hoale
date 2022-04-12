@@ -14,14 +14,7 @@ class PostsShow extends Component {
             this.props.history.push('/');
         });
     }
-    editPost(){
-        const { id } = this.props.match.params;
-            return (
-                <Link className="btn btn-primary" to={`/api/posts/${id}/edit`}>
-                    Edit
-                    </Link>
-            );
-    }
+
     render(){
         const { post } = this.props;
         if (!post) {
@@ -36,15 +29,16 @@ class PostsShow extends Component {
             <div className="container">
                            <Link to="/" className="btn btn-primary">Back to Index</Link>
 
+<Link className="btn btn-primary float-right" to={`/api/posts/${this.props.match.params.id}/edit`}>
+    Edit
+</Link>
+
             <button
             className="btn btn-danger float-right"
             onClick={this.onDeleteClick.bind(this)}
             >
                     Delete Post 
             </button>
-            <div className="float-right">
-                    { this.editPost() }
-                </div>
                 <div className="container">
                     <div className="row">
                         <div className="col-2"><h5>Title</h5></div>
